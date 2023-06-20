@@ -1,0 +1,3 @@
+rootProject.name = 'loan-bank'
+include 'decision-engine'
+
