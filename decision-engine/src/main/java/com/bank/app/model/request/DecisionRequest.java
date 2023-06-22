@@ -11,16 +11,16 @@ import java.math.BigDecimal;
 
 @Data
 public class DecisionRequest {
-    @NotNull
-    @Positive
+    @NotNull(message = "{validation.userCode.notNull}")
+    @Positive(message = "{validation.userCode.positive}")
     private Long userCode;
 
-    @NotNull
+    @NotNull(message = "{validation.loanAmount.notNull}")
     @LoanAmountValid
-    @Digits(integer = 5, fraction = 2)
+    @Digits(integer = 5, fraction = 2, message = "{validation.loanAmount.digits}")
     private BigDecimal loanAmount;
 
-    @NotNull
+    @NotNull(message = "{validation.loanPeriod.notNull}")
     @LoanPeriodValid
     private Integer loanPeriod;
 }

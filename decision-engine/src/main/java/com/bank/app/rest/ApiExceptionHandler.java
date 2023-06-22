@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 
 @RestControllerAdvice
 public class ApiExceptionHandler {
-    private static final String DELIMITER = ";";
+    private static final String DELIMITER = "; ";
     private static final String OBJECT_NOT_FOUND_EXCEPTION = "Object is not found!";
     private static final String OPERATION_EXCEPTION = "Operation exception on server side";
     private static final String VALIDATION_EXCEPTION = "Validation exception";
@@ -65,7 +65,7 @@ public class ApiExceptionHandler {
     }
 
     @ExceptionHandler(value = Exception.class)
-    protected ResponseEntity<ExceptionRestResponse> handleAllOtherExceptions(HttpServletRequest request) {
+    protected ResponseEntity<ExceptionRestResponse> handleAllOtherExceptions(HttpServletRequest request, Exception e) {
         return new ResponseEntity<>(
                 toExceptionRestResponse(
                         request.getRequestURI(),

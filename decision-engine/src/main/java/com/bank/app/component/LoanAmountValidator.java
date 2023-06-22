@@ -4,12 +4,15 @@ import com.bank.app.config.PropertiesConfig;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 
 import java.math.BigDecimal;
 
 @RequiredArgsConstructor
 public class LoanAmountValidator implements ConstraintValidator<LoanAmountValid, BigDecimal> {
     private final PropertiesConfig propertiesConfig;
+    private final MessageSource messageSource;
 
     @Override
     public boolean isValid(BigDecimal value, ConstraintValidatorContext context) {
@@ -24,10 +27,12 @@ public class LoanAmountValidator implements ConstraintValidator<LoanAmountValid,
     }
 
     private void formatMessage(ConstraintValidatorContext context) {
-        var msg = context.getDefaultConstraintMessageTemplate();
-        var formattedMsg = msg.formatted(propertiesConfig.getMinCreditAmount(), propertiesConfig.getMaxCreditAmount());
+        var messageKey = context.getDefaultConstraintMessageTemplate();
+        BigDecimal[] messageArgs = {propertiesConfig.getMinCreditAmount(), propertiesConfig.getMaxCreditAmount()};
+        var message = messageSource.getMessage(messageKey, messageArgs, LocaleContextHolder.getLocale());
+
         context.disableDefaultConstraintViolation();
-        context.buildConstraintViolationWithTemplate(formattedMsg)
+        context.buildConstraintViolationWithTemplate(message)
                 .addConstraintViolation();
     }
 }

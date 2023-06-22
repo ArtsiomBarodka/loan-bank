@@ -52,7 +52,7 @@ public class LoanEngineServiceImpl implements LoanEngineService {
         validateCreditModifier(creditModifier);
         validateCreditScore(minCreditScore);
 
-        var minLoanPeriod = (minCreditScore.multiply(loanAmount)).divide(creditModifier, RoundingMode.UP);
+        var minLoanPeriod = (minCreditScore.multiply(loanAmount)).divide(creditModifier, 0, RoundingMode.UP);
 
         log.info("Counted min loan period = {} for loan amount = {}, credit modifier = {},  min credit score = {}",
                 minLoanPeriod, loanAmount, creditModifier, minCreditScore);

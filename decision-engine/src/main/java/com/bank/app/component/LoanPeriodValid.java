@@ -19,7 +19,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Documented
 @Constraint(validatedBy = LoanPeriodValidator.class)
 public @interface LoanPeriodValid {
-    String message() default "Loan period should be between %s and %s months";
+    String message() default "validation.loanPeriod.loanPeriodValid";
 
     Class<? extends Payload>[] payload() default {};
 
