@@ -1,6 +1,11 @@
 group 'com.bank'
 version '1.0.0'
 
+
+repositories {
+    mavenCentral()
+}
+
 dependencies {
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
@@ -11,6 +16,10 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
+test {
+    useJUnitPlatform()
+}
+
 bootJar {
-    enabled = false
+    enabled = true
 }

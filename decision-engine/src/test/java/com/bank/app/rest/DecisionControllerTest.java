@@ -43,8 +43,8 @@ public class DecisionControllerTest {
     @Test
     void getDecisionTest() throws Exception {
         var decisionRequest = new DecisionRequest();
-        decisionRequest.setUserCode(1L);
-        decisionRequest.setLoanPeriod(20);
+        decisionRequest.setUserCode("1");
+        decisionRequest.setLoanPeriod("20");
         decisionRequest.setLoanAmount(BigDecimal.valueOf(5000L));
 
         var decision = new Decision();

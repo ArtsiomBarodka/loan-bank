@@ -43,8 +43,8 @@ public class DecisionFacadeImplTest {
         DECISION_REQUEST = new DecisionRequest();
 
         DECISION_REQUEST.setLoanAmount(BigDecimal.ONE);
-        DECISION_REQUEST.setUserCode(1L);
-        DECISION_REQUEST.setLoanPeriod(10);
+        DECISION_REQUEST.setUserCode("1");
+        DECISION_REQUEST.setLoanPeriod("10");
     }
 
     @Test
